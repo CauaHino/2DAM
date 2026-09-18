@@ -1,0 +1,63 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:Almacen.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="900"
+        Width="900" Height="900"
+        WindowStartupLocation="CenterScreen"
+        x:Class="Almacen.Views.MainWindow"
+        x:DataType="vm:MainViewModel"
+        xmlns:p1="clr-namespace:Material.Styles.Assists;assembly=Material.Styles"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="Almacen">
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainViewModel />
+    </Design.DataContext>
+
+    <StackPanel>
+        <!-- TITULO -->
+        <TextBlock Text="{Binding Titulo}"
+                   TextAlignment="Center"
+                   FontSize="40"
+                   FontWeight="Black"
+                   Margin="20"/>
+        
+        <!-- TABS -->
+        <TabControl HorizontalAlignment="Center"
+                    SelectedIndex="{Binding SelectedTab}">
+            <!-- TAB 1 -->
+            <TabItem Header="TAB 1">
+                <ComboBox Theme="{StaticResource MaterialOutlineComboBox}"
+                          p1:ComboBoxAssist.Label="CATEGORIA"
+                          SelectedItem="{Binding Componente.Categoria}"
+                          ItemsSource="{Binding Categorias}"/>
+            </TabItem>
+            <!-- TAB 2 -->
+            <TabItem Header="TAB 2">
+                
+            </TabItem>
+            <!-- TAB 3 -->
+            <TabItem Header="TAB 3">
+                
+            </TabItem>
+        </TabControl>
+        
+        <!-- STACK PANEL BOTONES -->
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    Spacing="10"
+                    Margin="20">
+            <Button Content="ATRÁS"
+                    CommandParameter="0"
+                    Command="{Binding cambiarTabCommand}"/>
+            <Button Content="SIGUIENTE"
+                    CommandParameter="1"
+                    Command="{Binding cambiarTabCommand}"/>
+        </StackPanel>
+    </StackPanel>
+
+</Window>
