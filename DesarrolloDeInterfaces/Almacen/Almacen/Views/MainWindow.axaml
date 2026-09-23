@@ -3,8 +3,8 @@
         xmlns:vm="using:Almacen.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="900"
-        Width="900" Height="900"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="800"
+        Width="800" Height="800"
         WindowStartupLocation="CenterScreen"
         x:Class="Almacen.Views.MainWindow"
         x:DataType="vm:MainViewModel"
@@ -31,18 +31,165 @@
                     SelectedIndex="{Binding SelectedTab}">
             <!-- TAB 1 -->
             <TabItem Header="TAB 1">
+                <StackPanel Margin="0,20,0,0"
+                            Spacing="5">
                 <ComboBox Theme="{StaticResource MaterialOutlineComboBox}"
-                          p1:ComboBoxAssist.Label="CATEGORIA"
+                          p1:ComboBoxAssist.Label="Categoria"
                           SelectedItem="{Binding Componente.Categoria}"
                           ItemsSource="{Binding Categorias}"/>
+                
+                <TextBox UseFloatingPlaceholder="True" 
+                         Classes="outline" 
+                         Theme="{StaticResource OutlineTextBox}" 
+                         p1:TextFieldAssist.Label="Nombre"
+                         Text="{Binding Componente.Nombre}"/>
+                
+                <TextBox UseFloatingPlaceholder="True" 
+                         Classes="outline" 
+                         Theme="{StaticResource OutlineTextBox}" 
+                         p1:TextFieldAssist.Label="Referencia"
+                         Text="{Binding Componente.Referencia}"/>
+                
+                <TextBox UseFloatingPlaceholder="True" 
+                         p1:TextFieldAssist.Label="Descripción" 
+                         Classes="outline"
+                         Theme="{StaticResource OutlineTextBox}" 
+                         MaxHeight="100" 
+                         AcceptsReturn="True"
+                         TextWrapping="Wrap"
+                         Text="{Binding Componente.Descripcion}"/>
+                </StackPanel>
             </TabItem>
             <!-- TAB 2 -->
             <TabItem Header="TAB 2">
+                <StackPanel Margin="0,20,0,0"
+                            Spacing="5">
+                    <TextBlock Text="Precio (€)"/>
+                    <NumericUpDown Theme="{StaticResource OutlineNumericUpDown}" 
+                                   ButtonSpinnerLocation="Right"
+                                   Value="{Binding Componente.Precio}"/>
+                    
+                    <TextBlock Text="Cantidad"/>
+                    <NumericUpDown Theme="{StaticResource OutlineNumericUpDown}" 
+                                   ButtonSpinnerLocation="Right" 
+                                   Value="{Binding Componente.Cantidad}"
+                                   />
+                    
+                    <TextBlock Text="Fecha de disponibilidad"
+                               Margin="0,15, 0,0"/>
+                    <CalendarDatePicker Name="CalendarDatePicker1" 
+                                        p1:TextFieldAssist.Label=""
+                                        SelectedDate="{Binding Componente.Fecha}"/>
+                    
+                    <CheckBox Content="Disponible"
+                              IsChecked="{Binding Componente.Disponible}"/>
+                </StackPanel>
                 
             </TabItem>
             <!-- TAB 3 -->
-            <TabItem Header="TAB 3">
-                
+            <TabItem Header="RESUMEN">
+                <Grid ColumnDefinitions="*, *"
+                      RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto,
+                                        Auto, Auto, Auto, Auto, Auto, Auto, Auto"
+                      RowSpacing="5"
+                      ColumnSpacing="5">
+                    
+                    <TextBlock 
+                        Grid.ColumnSpan="2"
+                        Text="RESUMEN DEL COMPONENTE"
+                        FontWeight="Heavy"
+                        FontSize="25"/>
+                    
+                    <TextBlock Grid.Column="0" Grid.Row="1" 
+                               FontWeight="Black"
+                               TextAlignment="Right"
+                               Text="Nombre:"
+                               FontSize="15"/>
+                    <TextBlock Grid.Column="1" Grid.Row="1" 
+                               FontWeight="Black"
+                               TextAlignment="Right"
+                               Text="{Binding Componente.Nombre}"
+                               FontSize="15"/>
+                    
+                    <TextBlock Grid.Column="0" Grid.Row="2" 
+                               FontWeight="Black"
+                               TextAlignment="Right"
+                               Text="Referencia:"
+                               FontSize="15"/>
+                    <TextBlock Grid.Column="1" Grid.Row="2" 
+                               FontWeight="Black"
+                               TextAlignment="Right"
+                               Text="{Binding Componente.Referencia}"
+                               FontSize="15"/>
+                    
+                    <TextBlock Grid.Column="0" Grid.Row="3" 
+                               FontWeight="Black"
+                               TextAlignment="Right"
+                               Text="Categoria:"
+                               FontSize="15"/>
+                    <TextBlock Grid.Column="1" Grid.Row="3" 
+                               FontWeight="Black"
+                               TextAlignment="Right"
+                               Text="{Binding Componente.Categoria}"
+                               FontSize="15"/>
+                    
+                    <TextBlock Grid.Column="0" Grid.Row="4" 
+                               FontWeight="Black"
+                               TextAlignment="Right"
+                               Text="Descripción:"
+                               FontSize="15"/>
+                    <TextBlock Grid.Column="1" Grid.Row="4" 
+                               FontWeight="Black"
+                               TextAlignment="Right"
+                               Text="{Binding Componente.Descripcion}"
+                               FontSize="15"/>
+                    
+                    <TextBlock Grid.Column="0" Grid.Row="5" 
+                               FontWeight="Black"
+                               TextAlignment="Right"
+                               Text="Precio:"
+                               FontSize="15"/>
+                    <TextBlock Grid.Column="1" Grid.Row="5" 
+                               FontWeight="Black"
+                               TextAlignment="Right"
+                               Text="{Binding Componente.Precio}"
+                               FontSize="15"/>
+                    
+                    <TextBlock Grid.Column="0" Grid.Row="6" 
+                               FontWeight="Black"
+                               TextAlignment="Right"
+                               Text="Cantidad:"
+                               FontSize="15"/>
+                    <TextBlock Grid.Column="1" Grid.Row="6" 
+                               FontWeight="Black"
+                               TextAlignment="Right"
+                               Text="{Binding Componente.Cantidad}"
+                               FontSize="15"/>
+                    <TextBlock Grid.Column="0" Grid.Row="7" 
+                               FontWeight="Black"
+                               TextAlignment="Right"
+                               Text="Disponibilidad:"
+                               FontSize="15"/>
+                    <TextBlock Grid.Column="1" Grid.Row="7" 
+                               FontWeight="Black"
+                               TextAlignment="Right"
+                               Text="{Binding Componente.Disponible}"
+                               FontSize="15"/>
+                    
+                    <TextBlock Grid.Column="0" Grid.Row="8" 
+                               FontWeight="Black"
+                               TextAlignment="Right"
+                               Text="Fecha de Disponibilidad:"
+                               FontSize="15"/>
+                    <TextBlock Grid.Column="1" Grid.Row="8" 
+                               FontWeight="Black"
+                               TextAlignment="Right"
+                               Text="{Binding Componente.Fecha}"
+                               FontSize="15"/>
+
+                    
+                    
+                </Grid>
             </TabItem>
         </TabControl>
         

@@ -10,9 +10,12 @@ public partial class MainViewModel : ViewModelBase
 {
     public AvaloniaList<string> Categorias { get; set; } = ["Periféricos", "Portatiles", "Consolas"];
     public string Titulo { get; set; } = "Almacen Tecnologico";
-    public Componente Componente { get; set; } = new Componente();
+    
     [ObservableProperty]
-    private int _selectedTab = 0;
+    public Componente _componente = new Componente();
+    
+    [ObservableProperty]
+    private int _selectedTab = 2;
 
     public MainViewModel()
     {
