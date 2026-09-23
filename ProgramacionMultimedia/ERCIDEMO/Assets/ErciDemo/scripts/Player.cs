@@ -20,6 +20,9 @@ public class Player : MonoBehaviour
     // Capa que representa el suelo
     public LayerMask groundLayer;
     
+    // Animaciones del personaje
+    public Animator anim;
+    
     // Movement direction
     private float move;
     
@@ -31,6 +34,7 @@ public class Player : MonoBehaviour
     {
         // Save in rb2D the Rigidbody of the player
         rb2D = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -51,6 +55,10 @@ public class Player : MonoBehaviour
             // Cambia la escala en el valor x
             transform.localScale = new Vector3(Mathf.Sign(move), 1, 1);
         }
+        
+        anim.SetFloat("Speed", Mathf.Abs(move));
+        anim.SetFloat("VerticalVelocity", rb2D.linearVelocity.y);
+        anim.SetBool("isGrounded", isGrounded);
     }
 
     void FixedUpdate()
