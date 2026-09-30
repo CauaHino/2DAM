@@ -1,4 +1,4 @@
-package tictactoe;
+package ejercicio7;
 
 public class Tablero {
     private char[][] casillas = {

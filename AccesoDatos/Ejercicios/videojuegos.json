@@ -1,0 +1,23 @@
+[
+  {
+    "Titulo": "Minecraft",
+    "Plataforma": "PC",
+    "Genero": "Sandbox",
+    "Precio": "29.99",
+    "Multijugador": "true"
+  },
+  {
+    "Titulo": "Hollow Knight",
+    "Plataforma": "Switch",
+    "Genero": "Aventura",
+    "Precio": "14.99",
+    "Multijugador": "false"
+  },
+  {
+    "Titulo": "Stardew Valley",
+    "Plataforma": "PC",
+    "Genero": "Simulacion",
+    "Precio": "13.99",
+    "Multijugador": "true"
+  }
+]

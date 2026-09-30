@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<endpoints
+	xmlns="http://java.sun.com/xml/ns/jax-ws/ri/runtime" version="2.0">
+
+	<endpoint name="HolaMundoService"
+		implementation="es.ercilla.soap.holamundo.HolaMundoService"
+		url-pattern="/HolaMundoService" />
+	<endpoint name="ParametrosService"
+		implementation="es.ercilla.soap.parametros.ParametrosService"
+		url-pattern="/ParametrosService" />
+	<endpoint name="ProductoService"
+		implementation="es.ercilla.soap.servicio.ProductoService"
+		url-pattern="/ProductoService" />
+		
+</endpoints>

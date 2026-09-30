@@ -72,14 +72,19 @@
                     <TextBlock Text="Cantidad"/>
                     <NumericUpDown Theme="{StaticResource OutlineNumericUpDown}" 
                                    ButtonSpinnerLocation="Right" 
+                                   Minimum="1"
+                                   ParsingNumberStyle="Integer"
                                    Value="{Binding Componente.Cantidad}"
                                    />
                     
-                    <TextBlock Text="Fecha de disponibilidad"
-                               Margin="0,15, 0,0"/>
-                    <CalendarDatePicker Name="CalendarDatePicker1" 
-                                        p1:TextFieldAssist.Label=""
-                                        SelectedDate="{Binding Componente.Fecha}"/>
+                    <StackPanel IsVisible="{Binding Componente.Disponible}">
+                        <TextBlock Text="Fecha de disponibilidad"
+                                   Margin="0,15, 0,0"/>
+                        <CalendarDatePicker Name="CalendarDatePicker1" 
+                                            p1:TextFieldAssist.Label=""
+                                            SelectedDate="{Binding Componente.Fecha}"/>
+
+                    </StackPanel>
                     
                     <CheckBox Content="Disponible"
                               IsChecked="{Binding Componente.Disponible}"/>
@@ -90,7 +95,7 @@
             <TabItem Header="RESUMEN">
                 <Grid ColumnDefinitions="*, *"
                       RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto,
-                                        Auto, Auto, Auto, Auto, Auto, Auto, Auto"
+                                        Auto, Auto"
                       RowSpacing="5"
                       ColumnSpacing="5">
                     
@@ -102,90 +107,92 @@
                     
                     <TextBlock Grid.Column="0" Grid.Row="1" 
                                FontWeight="Black"
-                               TextAlignment="Right"
+                               TextAlignment="Center"
                                Text="Nombre:"
                                FontSize="15"/>
                     <TextBlock Grid.Column="1" Grid.Row="1" 
                                FontWeight="Black"
-                               TextAlignment="Right"
+                               TextAlignment="Center"
                                Text="{Binding Componente.Nombre}"
                                FontSize="15"/>
                     
                     <TextBlock Grid.Column="0" Grid.Row="2" 
                                FontWeight="Black"
-                               TextAlignment="Right"
+                               TextAlignment="Center"
                                Text="Referencia:"
                                FontSize="15"/>
                     <TextBlock Grid.Column="1" Grid.Row="2" 
                                FontWeight="Black"
-                               TextAlignment="Right"
+                               TextAlignment="Center"
                                Text="{Binding Componente.Referencia}"
                                FontSize="15"/>
                     
                     <TextBlock Grid.Column="0" Grid.Row="3" 
                                FontWeight="Black"
-                               TextAlignment="Right"
+                               TextAlignment="Center"
                                Text="Categoria:"
                                FontSize="15"/>
                     <TextBlock Grid.Column="1" Grid.Row="3" 
                                FontWeight="Black"
-                               TextAlignment="Right"
+                               TextAlignment="Center"
                                Text="{Binding Componente.Categoria}"
                                FontSize="15"/>
                     
                     <TextBlock Grid.Column="0" Grid.Row="4" 
                                FontWeight="Black"
-                               TextAlignment="Right"
+                               TextAlignment="Center"
                                Text="Descripción:"
                                FontSize="15"/>
                     <TextBlock Grid.Column="1" Grid.Row="4" 
                                FontWeight="Black"
-                               TextAlignment="Right"
+                               TextAlignment="Center"
                                Text="{Binding Componente.Descripcion}"
                                FontSize="15"/>
                     
                     <TextBlock Grid.Column="0" Grid.Row="5" 
                                FontWeight="Black"
-                               TextAlignment="Right"
+                               TextAlignment="Center"
                                Text="Precio:"
                                FontSize="15"/>
                     <TextBlock Grid.Column="1" Grid.Row="5" 
                                FontWeight="Black"
-                               TextAlignment="Right"
-                               Text="{Binding Componente.Precio}"
+                               TextAlignment="Center"
+                               Text="{Binding Componente.Precio, StringFormat='{}{0:F2} €'}"
                                FontSize="15"/>
                     
                     <TextBlock Grid.Column="0" Grid.Row="6" 
                                FontWeight="Black"
-                               TextAlignment="Right"
+                               TextAlignment="Center"
                                Text="Cantidad:"
                                FontSize="15"/>
                     <TextBlock Grid.Column="1" Grid.Row="6" 
                                FontWeight="Black"
-                               TextAlignment="Right"
-                               Text="{Binding Componente.Cantidad}"
+                               TextAlignment="Center"
+                               Text="{Binding Componente.Cantidad, StringFormat='{}{0} unidades'}"
                                FontSize="15"/>
                     <TextBlock Grid.Column="0" Grid.Row="7" 
                                FontWeight="Black"
-                               TextAlignment="Right"
+                               TextAlignment="Center"
                                Text="Disponibilidad:"
                                FontSize="15"/>
                     <TextBlock Grid.Column="1" Grid.Row="7" 
                                FontWeight="Black"
-                               TextAlignment="Right"
+                               TextAlignment="Center"
                                Text="{Binding Componente.Disponible}"
                                FontSize="15"/>
                     
                     <TextBlock Grid.Column="0" Grid.Row="8" 
                                FontWeight="Black"
-                               TextAlignment="Right"
+                               TextAlignment="Center"
                                Text="Fecha de Disponibilidad:"
-                               FontSize="15"/>
+                               FontSize="15"
+                               IsVisible="{Binding Componente.Disponible}"/>
                     <TextBlock Grid.Column="1" Grid.Row="8" 
                                FontWeight="Black"
-                               TextAlignment="Right"
-                               Text="{Binding Componente.Fecha}"
-                               FontSize="15"/>
+                               TextAlignment="Center"
+                               Text="{Binding Componente.Fecha, StringFormat='{}{0:dd/MM/yy}'}"
+                               FontSize="15"
+                               IsVisible="{Binding Componente.Disponible}"/>
 
                     
                     
@@ -199,11 +206,16 @@
                     Spacing="10"
                     Margin="20">
             <Button Content="ATRÁS"
-                    CommandParameter="0"
-                    Command="{Binding cambiarTabCommand}"/>
+                    CommandParameter="-1"
+                    IsVisible="{Binding IsVisibleBack}"
+                    Command="{Binding CambiarTabCommand}"/>
             <Button Content="SIGUIENTE"
                     CommandParameter="1"
-                    Command="{Binding cambiarTabCommand}"/>
+                    IsVisible="{Binding IsVisibleNext}"
+                    Command="{Binding CambiarTabCommand}"/>
+            <Button Content="FINALIZAR"
+                    IsVisible="{Binding IsVisibleFinish}"
+                    Command="{Binding Finalizar}"/>
         </StackPanel>
     </StackPanel>
 

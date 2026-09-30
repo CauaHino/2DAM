@@ -1,4 +1,4 @@
-package tictactoe;
+package ejercicio7;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;

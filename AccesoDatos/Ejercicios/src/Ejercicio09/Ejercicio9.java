@@ -42,7 +42,7 @@ public class Ejercicio9 {
                         System.out.println("La agenda está vacía.");
                     } else {
                         for (int i = 0; i < agenda.size(); i++) {
-                            System.out.println(i + ". " + agenda.get(i));
+                            System.out.println((i+1) + ". " + agenda.get(i));
                         }
                     }
                     break;
@@ -59,15 +59,15 @@ public class Ejercicio9 {
                     break;
 
                 case 3:
-                    System.out.print("Índice del contacto a borrar: ");
-                    int index = input.nextInt();
+                    System.out.print("Indice del contacto a borrar: ");
+                    int index = input.nextInt() - 1;
                     input.nextLine();
 
                     if (index >= 0 && index < agenda.size()) {
                         agenda.remove(index);
                         System.out.println("Contacto eliminado.");
                     } else {
-                        System.out.println("Índice no válido.");
+                        System.out.println("Indice no válido.");
                     }
                     break;
 
