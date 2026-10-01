@@ -24,8 +24,8 @@
                    TextAlignment="Center"
                    FontSize="40"
                    FontWeight="Black"
-                   Margin="20"/>
-        
+                   Margin="20" />
+
         <!-- TABS -->
         <TabControl HorizontalAlignment="Center"
                     SelectedIndex="{Binding SelectedTab}">
@@ -33,63 +33,62 @@
             <TabItem Header="TAB 1">
                 <StackPanel Margin="0,20,0,0"
                             Spacing="5">
-                <ComboBox Theme="{StaticResource MaterialOutlineComboBox}"
-                          p1:ComboBoxAssist.Label="Categoria"
-                          SelectedItem="{Binding Componente.Categoria}"
-                          ItemsSource="{Binding Categorias}"/>
-                
-                <TextBox UseFloatingPlaceholder="True" 
-                         Classes="outline" 
-                         Theme="{StaticResource OutlineTextBox}" 
-                         p1:TextFieldAssist.Label="Nombre"
-                         Text="{Binding Componente.Nombre}"/>
-                
-                <TextBox UseFloatingPlaceholder="True" 
-                         Classes="outline" 
-                         Theme="{StaticResource OutlineTextBox}" 
-                         p1:TextFieldAssist.Label="Referencia"
-                         Text="{Binding Componente.Referencia}"/>
-                
-                <TextBox UseFloatingPlaceholder="True" 
-                         p1:TextFieldAssist.Label="Descripción" 
-                         Classes="outline"
-                         Theme="{StaticResource OutlineTextBox}" 
-                         MaxHeight="100" 
-                         AcceptsReturn="True"
-                         TextWrapping="Wrap"
-                         Text="{Binding Componente.Descripcion}"/>
+                    <ComboBox Theme="{StaticResource MaterialOutlineComboBox}"
+                              p1:ComboBoxAssist.Label="Categoria"
+                              SelectedItem="{Binding Componente.Categoria}"
+                              ItemsSource="{Binding Categorias}" />
+
+                    <TextBox UseFloatingPlaceholder="True"
+                             Classes="outline"
+                             Theme="{StaticResource OutlineTextBox}"
+                             p1:TextFieldAssist.Label="Nombre"
+                             Text="{Binding Componente.Nombre}" />
+
+                    <TextBox UseFloatingPlaceholder="True"
+                             Classes="outline"
+                             Theme="{StaticResource OutlineTextBox}"
+                             p1:TextFieldAssist.Label="Referencia"
+                             Text="{Binding Componente.Referencia}" />
+
+                    <TextBox UseFloatingPlaceholder="True"
+                             p1:TextFieldAssist.Label="Descripción"
+                             Classes="outline"
+                             Theme="{StaticResource OutlineTextBox}"
+                             MaxHeight="100"
+                             AcceptsReturn="True"
+                             TextWrapping="Wrap"
+                             Text="{Binding Componente.Descripcion}" />
                 </StackPanel>
             </TabItem>
             <!-- TAB 2 -->
             <TabItem Header="TAB 2">
                 <StackPanel Margin="0,20,0,0"
                             Spacing="5">
-                    <TextBlock Text="Precio (€)"/>
-                    <NumericUpDown Theme="{StaticResource OutlineNumericUpDown}" 
+                    <TextBlock Text="Precio (€)" />
+                    <NumericUpDown Theme="{StaticResource OutlineNumericUpDown}"
                                    ButtonSpinnerLocation="Right"
-                                   Value="{Binding Componente.Precio}"/>
-                    
-                    <TextBlock Text="Cantidad"/>
-                    <NumericUpDown Theme="{StaticResource OutlineNumericUpDown}" 
-                                   ButtonSpinnerLocation="Right" 
+                                   Value="{Binding Componente.Precio}" />
+
+                    <TextBlock Text="Cantidad" />
+                    <NumericUpDown Theme="{StaticResource OutlineNumericUpDown}"
+                                   ButtonSpinnerLocation="Right"
                                    Minimum="1"
                                    ParsingNumberStyle="Integer"
-                                   Value="{Binding Componente.Cantidad}"
-                                   />
-                    
+                                   Value="{Binding Componente.Cantidad}" />
+
                     <StackPanel IsVisible="{Binding Componente.Disponible}">
                         <TextBlock Text="Fecha de disponibilidad"
-                                   Margin="0,15, 0,0"/>
-                        <CalendarDatePicker Name="CalendarDatePicker1" 
+                                   Margin="0,15, 0,0" />
+                        <CalendarDatePicker Name="CalendarDatePicker1"
                                             p1:TextFieldAssist.Label=""
-                                            SelectedDate="{Binding Componente.Fecha}"/>
+                                            SelectedDate="{Binding Componente.Fecha}" />
 
                     </StackPanel>
-                    
+
                     <CheckBox Content="Disponible"
-                              IsChecked="{Binding Componente.Disponible}"/>
+                              IsChecked="{Binding Componente.Disponible}" />
                 </StackPanel>
-                
+
             </TabItem>
             <!-- TAB 3 -->
             <TabItem Header="RESUMEN">
@@ -98,108 +97,131 @@
                                         Auto, Auto"
                       RowSpacing="5"
                       ColumnSpacing="5">
-                    
-                    <TextBlock 
+
+                    <TextBlock
                         Grid.ColumnSpan="2"
                         Text="RESUMEN DEL COMPONENTE"
                         FontWeight="Heavy"
-                        FontSize="25"/>
-                    
-                    <TextBlock Grid.Column="0" Grid.Row="1" 
+                        FontSize="25" />
+
+                    <TextBlock Grid.Column="0" Grid.Row="1"
                                FontWeight="Black"
                                TextAlignment="Center"
                                Text="Nombre:"
-                               FontSize="15"/>
-                    <TextBlock Grid.Column="1" Grid.Row="1" 
+                               FontSize="15" />
+                    <TextBlock Grid.Column="1" Grid.Row="1"
                                FontWeight="Black"
                                TextAlignment="Center"
                                Text="{Binding Componente.Nombre}"
-                               FontSize="15"/>
-                    
-                    <TextBlock Grid.Column="0" Grid.Row="2" 
+                               FontSize="15" />
+
+                    <TextBlock Grid.Column="0" Grid.Row="2"
                                FontWeight="Black"
                                TextAlignment="Center"
                                Text="Referencia:"
-                               FontSize="15"/>
-                    <TextBlock Grid.Column="1" Grid.Row="2" 
+                               FontSize="15" />
+                    <TextBlock Grid.Column="1" Grid.Row="2"
                                FontWeight="Black"
                                TextAlignment="Center"
                                Text="{Binding Componente.Referencia}"
-                               FontSize="15"/>
-                    
-                    <TextBlock Grid.Column="0" Grid.Row="3" 
+                               FontSize="15" />
+
+                    <TextBlock Grid.Column="0" Grid.Row="3"
                                FontWeight="Black"
                                TextAlignment="Center"
                                Text="Categoria:"
-                               FontSize="15"/>
-                    <TextBlock Grid.Column="1" Grid.Row="3" 
+                               FontSize="15" />
+                    <TextBlock Grid.Column="1" Grid.Row="3"
                                FontWeight="Black"
                                TextAlignment="Center"
                                Text="{Binding Componente.Categoria}"
-                               FontSize="15"/>
-                    
-                    <TextBlock Grid.Column="0" Grid.Row="4" 
+                               FontSize="15" />
+
+                    <TextBlock Grid.Column="0" Grid.Row="4"
                                FontWeight="Black"
                                TextAlignment="Center"
                                Text="Descripción:"
-                               FontSize="15"/>
-                    <TextBlock Grid.Column="1" Grid.Row="4" 
+                               FontSize="15" />
+                    <TextBlock Grid.Column="1" Grid.Row="4"
                                FontWeight="Black"
                                TextAlignment="Center"
                                Text="{Binding Componente.Descripcion}"
-                               FontSize="15"/>
-                    
-                    <TextBlock Grid.Column="0" Grid.Row="5" 
+                               FontSize="15" />
+
+                    <TextBlock Grid.Column="0" Grid.Row="5"
                                FontWeight="Black"
                                TextAlignment="Center"
                                Text="Precio:"
-                               FontSize="15"/>
-                    <TextBlock Grid.Column="1" Grid.Row="5" 
+                               FontSize="15" />
+                    <TextBlock Grid.Column="1" Grid.Row="5"
                                FontWeight="Black"
                                TextAlignment="Center"
                                Text="{Binding Componente.Precio, StringFormat='{}{0:F2} €'}"
-                               FontSize="15"/>
-                    
-                    <TextBlock Grid.Column="0" Grid.Row="6" 
+                               FontSize="15" />
+
+                    <TextBlock Grid.Column="0" Grid.Row="6"
                                FontWeight="Black"
                                TextAlignment="Center"
                                Text="Cantidad:"
-                               FontSize="15"/>
-                    <TextBlock Grid.Column="1" Grid.Row="6" 
+                               FontSize="15" />
+                    <TextBlock Grid.Column="1" Grid.Row="6"
                                FontWeight="Black"
                                TextAlignment="Center"
                                Text="{Binding Componente.Cantidad, StringFormat='{}{0} unidades'}"
-                               FontSize="15"/>
-                    <TextBlock Grid.Column="0" Grid.Row="7" 
+                               FontSize="15" />
+                    <TextBlock Grid.Column="0" Grid.Row="7"
                                FontWeight="Black"
                                TextAlignment="Center"
                                Text="Disponibilidad:"
-                               FontSize="15"/>
-                    <TextBlock Grid.Column="1" Grid.Row="7" 
+                               FontSize="15" />
+                    <TextBlock Grid.Column="1" Grid.Row="7"
                                FontWeight="Black"
                                TextAlignment="Center"
                                Text="{Binding Componente.Disponible}"
-                               FontSize="15"/>
-                    
-                    <TextBlock Grid.Column="0" Grid.Row="8" 
+                               FontSize="15" />
+
+                    <TextBlock Grid.Column="0" Grid.Row="8"
                                FontWeight="Black"
                                TextAlignment="Center"
                                Text="Fecha de Disponibilidad:"
                                FontSize="15"
-                               IsVisible="{Binding Componente.Disponible}"/>
-                    <TextBlock Grid.Column="1" Grid.Row="8" 
+                               IsVisible="{Binding Componente.Disponible}" />
+                    <TextBlock Grid.Column="1" Grid.Row="8"
                                FontWeight="Black"
                                TextAlignment="Center"
                                Text="{Binding Componente.Fecha, StringFormat='{}{0:dd/MM/yy}'}"
                                FontSize="15"
-                               IsVisible="{Binding Componente.Disponible}"/>
+                               IsVisible="{Binding Componente.Disponible}" />
 
-                    
-                    
+
                 </Grid>
             </TabItem>
+
+            <TabItem Header="TABLA">
+                <StackPanel Margin="15">
+                    <Button IsVisible="False" 
+                        Command="{Binding ObtenerComponentesCommand}" />
+                    <ListBox ItemsSource="{Binding Componentes}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Border Padding="15"
+                                        Margin="5"
+                                        CornerRadius="10"
+                                        BorderThickness="1"
+                                        BorderBrush="AntiqueWhite">
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding Categoria}" />
+                                        <TextBlock Text="{Binding Nombre}" />
+                                        <TextBlock Text="{Binding Descripcion}" />
+                                    </StackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </StackPanel>
+            </TabItem>
         </TabControl>
-        
+
         <!-- STACK PANEL BOTONES -->
         <StackPanel Orientation="Horizontal"
                     HorizontalAlignment="Center"
@@ -208,14 +230,14 @@
             <Button Content="ATRÁS"
                     CommandParameter="-1"
                     IsVisible="{Binding IsVisibleBack}"
-                    Command="{Binding CambiarTabCommand}"/>
+                    Command="{Binding CambiarTabCommand}" />
             <Button Content="SIGUIENTE"
                     CommandParameter="1"
                     IsVisible="{Binding IsVisibleNext}"
-                    Command="{Binding CambiarTabCommand}"/>
+                    Command="{Binding CambiarTabCommand}" />
             <Button Content="FINALIZAR"
                     IsVisible="{Binding IsVisibleFinish}"
-                    Command="{Binding Finalizar}"/>
+                    Command="{Binding Finalizar}" />
         </StackPanel>
     </StackPanel>
 

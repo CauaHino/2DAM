@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using Almacen.Models;
 using Almacen.Services;
@@ -20,16 +21,23 @@ public partial class MainViewModel : ViewModelBase
     [ObservableProperty]
     public Componente _componente = new Componente();
     
-    [ObservableProperty]
-    private int _selectedTab = 0;
-    
-    [ObservableProperty]
-    private bool _isVisibleBack = true;
-    
+    [ObservableProperty] private int _selectedTab = 0;
+    [ObservableProperty] private bool _isVisibleBack = true;
     [ObservableProperty] private bool _isVisibleNext = true;
     [ObservableProperty] private bool _isVisibleFinish = true;
 
+    [ObservableProperty] private AvaloniaList<Componente> _componentes;
+
     public MainViewModel() {}
+
+    async partial void OnSelectedTabChanged(int value)
+    {
+        Comportamiento();
+        if (value == 3)
+        {
+            Componentes = await N8NService.ConsultarComponentes();
+        }
+    }
 
     private async Task MostrarMensaje(string mensaje)
     {
@@ -44,7 +52,6 @@ public partial class MainViewModel : ViewModelBase
         {
             return true;
         }
-
         return false;
     }
 
@@ -58,6 +65,12 @@ public partial class MainViewModel : ViewModelBase
        }
 
        await N8NService.CrearComponente(Componente);
+    }
+    
+    [RelayCommand]
+    public async Task ObtenerComponentes()
+    {
+        Componentes = await N8NService.ConsultarComponentes();
     }
 
     [RelayCommand]
@@ -76,7 +89,10 @@ public partial class MainViewModel : ViewModelBase
             return;
         }
         SelectedTab+=number;
-        
+    }
+
+    private void Comportamiento()
+    {
         if (SelectedTab == 0)
         {
             IsVisibleBack = false;
@@ -92,6 +108,11 @@ public partial class MainViewModel : ViewModelBase
             IsVisibleBack = true;
             IsVisibleNext = false;
             IsVisibleFinish = true;
+        } else if (SelectedTab == 3)
+        {
+            IsVisibleBack = false;
+            IsVisibleNext = false;
+            IsVisibleFinish = false;
         }
     }
     
