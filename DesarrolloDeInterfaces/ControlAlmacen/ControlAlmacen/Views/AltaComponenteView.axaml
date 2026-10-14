@@ -1,0 +1,279 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:ControlAlmacen.ViewModels"
+             xmlns:assists="clr-namespace:Material.Styles.Assists;assembly=Material.Styles"
+             xmlns:suki="https://github.com/kikipoulet/SukiUI"
+             xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+             xmlns:asyncImageLoader="clr-namespace:AsyncImageLoader;assembly=AsyncImageLoader.Avalonia"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="ControlAlmacen.Views.AltaComponenteView"
+             x:DataType="viewModels:AltaComponenteViewModel">
+
+    <Design.DataContext>
+        <viewModels:AltaComponenteViewModel />
+    </Design.DataContext>
+    <UserControl.DataContext>
+        <viewModels:AltaComponenteViewModel />
+    </UserControl.DataContext>
+
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled"
+                  VerticalScrollBarVisibility="Auto"
+                  Padding="20">
+        <Grid ColumnDefinitions="Auto, Auto"
+              ColumnSpacing="20">
+            <!-- CONTENIDO DE LA COLUMNA 0 -->
+            <StackPanel Grid.Column="0">
+                <TextBlock Classes="h1" Text="Nuevo Producto" />
+                <TextBlock Text="Añade un producto al catálogo" />
+                <suki:GlassCard Margin="0,20,0,0">
+                    <StackPanel Spacing="16">
+                        <StackPanel Spacing="4">
+                            <StackPanel Orientation="Horizontal" Spacing="20">
+                                <avalonia:MaterialIcon Kind="PackageVariant" Width="32" />
+                                <TextBlock Classes="h3" Text="Información general" />
+                            </StackPanel>
+                            <TextBlock Text="Información básica para identificar el producto" />
+                        </StackPanel>
+                        <StackPanel Spacing="10">
+                            <TextBlock Text="Nombre" />
+                            <TextBox PlaceholderText="Ej. Monitor Dell UltraSharp" />
+                        </StackPanel>
+                        <Grid ColumnDefinitions="*,*">
+                            <StackPanel Grid.Column="0" Spacing="10">
+                                <TextBlock Text="Código" />
+                                <TextBox PlaceholderText="PROD-001" />
+                            </StackPanel>
+                            <StackPanel Grid.Column="1" Spacing="5">
+                                <TextBlock Text="Tipo" />
+                                <ComboBox PlaceholderText="Producto">
+
+                                </ComboBox>
+                            </StackPanel>
+                        </Grid>
+
+                        <Grid ColumnDefinitions="*,*"
+                              ColumnSpacing="5">
+                            <StackPanel Grid.Column="0" Spacing="10">
+                                <TextBlock Text="Categoría" />
+                                <ComboBox PlaceholderText="Selecciona una categoría" />
+                            </StackPanel>
+                            <StackPanel Grid.Column="1" Spacing="14">
+                                <TextBlock Text="Marca" />
+                                <TextBox PlaceholderText="Ej. Dell" />
+                            </StackPanel>
+                        </Grid>
+
+                        <StackPanel>
+                            <TextBlock Text="Descripción" />
+                            <TextBlock Text="Opcional"
+                                       FontSize="10"
+                                       HorizontalAlignment="Right" />
+                            <TextBox PlaceholderText="Descripción del producto..." />
+                        </StackPanel>
+
+                    </StackPanel>
+                </suki:GlassCard>
+
+                <suki:GlassCard Margin="0,20,0,0">
+                    <StackPanel Spacing="16">
+                        <StackPanel Spacing="4">
+                            <StackPanel Orientation="Horizontal" Spacing="20">
+                                <avalonia:MaterialIcon Kind="Euro" Width="32" />
+                                <TextBlock Classes="h3" Text="Información comercial" />
+                            </StackPanel>
+                            <TextBlock Text="Precio, impuestos y datos de venta" />
+                        </StackPanel>
+                        <Grid ColumnDefinitions="*,*"
+                              ColumnSpacing="5">
+                            <StackPanel Grid.Column="0">
+                                <TextBlock Text="Precio de Venta" />
+                                <NumericUpDown PlaceholderText="0,00" />
+                            </StackPanel>
+                            <StackPanel Grid.Column="1">
+                                <TextBlock Text="Precio de Coste" />
+                                <NumericUpDown PlaceholderText="0,00" />
+                            </StackPanel>
+                        </Grid>
+
+                        <Grid ColumnDefinitions="*,*"
+                              ColumnSpacing="5">
+                            <StackPanel Grid.Column="0">
+                                <TextBlock Text="IVA" />
+                                <NumericUpDown PlaceholderText="21%" />
+                            </StackPanel>
+                            <StackPanel Grid.Column="1">
+                                <TextBlock Text="Unidad" />
+                                <NumericUpDown PlaceholderText="Unidad" />
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+                </suki:GlassCard>
+
+                <suki:GlassCard Margin="0,20,0,0">
+                    <StackPanel Spacing="16">
+                        <StackPanel Spacing="4">
+                            <StackPanel Orientation="Horizontal" Spacing="20">
+                                <avalonia:MaterialIcon Kind="Warehouse" Width="32" />
+                                <TextBlock Classes="h3" Text="Inventario y ubicación" />
+                            </StackPanel>
+                            <TextBlock Text="Control de existencias y localización" />
+                        </StackPanel>
+                        <Grid ColumnDefinitions="*,*"
+                              ColumnSpacing="5">
+                            <StackPanel Grid.Column="0">
+                                <TextBlock Text="Stock actual" />
+                                <NumericUpDown Value="0" />
+                            </StackPanel>
+                            <StackPanel Grid.Column="1">
+                                <TextBlock Text="Stock minimo" />
+                                <NumericUpDown Value="0" />
+                            </StackPanel>
+                        </Grid>
+
+                        <Grid ColumnDefinitions="*,*"
+                              ColumnSpacing="5">
+                            <StackPanel Grid.Column="0">
+                                <TextBlock Text="IVA" />
+                                <NumericUpDown PlaceholderText="21%" />
+                            </StackPanel>
+                            <StackPanel Grid.Column="1">
+                                <TextBlock Text="Unidad" />
+                                <NumericUpDown PlaceholderText="Unidad" />
+                            </StackPanel>
+                        </Grid>
+                    </StackPanel>
+                </suki:GlassCard>
+            </StackPanel>
+
+            <!-- CONTENIDO DE LA COLUMNA 1 -->
+            <StackPanel Grid.Column="1">
+                <Button Classes="Outlined" HorizontalAlignment="Right"
+                        Margin="0. 25, 0,0">
+                    <Grid ColumnDefinitions="*,*"
+                          ColumnSpacing="5">
+                        <avalonia:MaterialIcon Grid.Column="0" Kind="ArrowLeft" />
+                        <TextBlock Grid.Column="1" Text="VOLVER" />
+                    </Grid>
+                </Button>
+
+                <suki:GlassCard Margin="0,75,0,0">
+                    <StackPanel Spacing="14">
+                        <StackPanel Spacing="6">
+                            <TextBlock Classes="h3" Text="ESTADO" />
+                            <TextBlock Text="Visibilidad y disponibilidad" />
+                        </StackPanel>
+                        <Grid ColumnDefinitions="*,Auto">
+                            <StackPanel Spacing="2">
+                                <TextBlock Text="Producto activo" />
+                                <TextBlock Text="Permite utilizar y vendel el producto"
+                                           FontSize="12" />
+                            </StackPanel>
+                            <ToggleSwitch Grid.Column="1" IsChecked="True" />
+                        </Grid>
+                        <Separator />
+                        <Grid ColumnDefinitions="*,Auto">
+                            <StackPanel Spacing="2">
+                                <TextBlock Text="Producto Destacado" />
+                                <TextBlock Text="Mostrar de forma prioritaria"
+                                           FontSize="12" />
+                            </StackPanel>
+                            <ToggleSwitch Grid.Column="1" />
+                        </Grid>
+                        <Separator />
+                        <Grid ColumnDefinitions="*,Auto">
+                            <StackPanel Spacing="2">
+                                <TextBlock Text="Disponible online" />
+                                <TextBlock Text="Permitir venta desde internet"
+                                           FontSize="12" />
+                            </StackPanel>
+                            <ToggleSwitch Grid.Column="1" IsChecked="True" />
+                        </Grid>
+                    </StackPanel>
+                </suki:GlassCard>
+
+                <suki:GlassCard Margin="0,20,0,0">
+                    <StackPanel Spacing="16">
+                        <StackPanel Spacing="4">
+                            <StackPanel Orientation="Horizontal" Spacing="20">
+                                <avalonia:MaterialIcon Kind="Calendar" Width="32" />
+                                <TextBlock Classes="h3" Text="Fechas" />
+                            </StackPanel>
+                            <TextBlock Text="Información temporal del producto" />
+                        </StackPanel>
+                        <StackPanel Spacing="15">
+                            <TextBlock Text="Fecha de alta" />
+                            <DatePicker />
+                        </StackPanel>
+                        <StackPanel Spacing="15">
+                            <TextBlock Text="Disponible desde" />
+                            <DatePicker />
+                        </StackPanel>
+                        <StackPanel Spacing="15">
+                            <Grid>
+                                <TextBlock Text="Fin de garantía" />
+                                <TextBlock Text="Opcional"
+                                           TextAlignment="Right"
+                                           FontSize="12" />
+                            </Grid>
+                            <DatePicker />
+                        </StackPanel>
+                    </StackPanel>
+                </suki:GlassCard>
+
+                <suki:GlassCard Margin="0,20,0,0">
+                    <StackPanel Spacing="16">
+                        <StackPanel Spacing="4">
+                            <StackPanel Orientation="Horizontal" Spacing="20">
+                                <avalonia:MaterialIcon Kind="TruckOutline" Width="32" />
+                                <TextBlock Classes="h3" Text="Provedor" />
+                            </StackPanel>
+                            <TextBlock Text="Datos relacionados con suministro" />
+                        </StackPanel>
+                        <StackPanel Spacing="5">
+                            <TextBlock Text="Provedor" />
+                            <ComboBox PlaceholderText="Seleccione proveedor">
+
+                            </ComboBox>
+                        </StackPanel>
+                        <StackPanel Spacing="15">
+                            <TextBlock Text="Referencia proveedor" />
+                            <TextBox PlaceholderText="Ej. DELL-U2724D" />
+                        </StackPanel>
+                    </StackPanel>
+                </suki:GlassCard>
+                <suki:GlassCard Margin="0,20,0,0">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal" Spacing="15">
+                            <avalonia:MaterialIcon Kind="Image" Width="32" />
+                            <TextBlock Classes="h3" Text="Imagen" />
+                        </StackPanel>
+
+                        <TextBlock Text="Imagen principal del producto" />
+
+                        <Image Stretch="UniformToFill"
+                               Width="100" Height="100"
+                               Source="{Binding Imagen}"
+                               IsVisible="{Binding MostrarImagen}" />
+                        <Border BorderThickness="1" Padding="40" Margin="10"
+                                BorderBrush="Gray" CornerRadius="10"
+                                IsVisible="{Binding !MostrarImagen}">
+                            <StackPanel HorizontalAlignment="Center">
+                                <avalonia:MaterialIcon Kind="ImageAdd" Width="40" />
+                                <TextBlock Text="Sin imagen" TextAlignment="Center" />
+                                <TextBlock Text="PNG, JPG O WEBP" TextAlignment="Center" />
+                            </StackPanel>
+                        </Border>
+                        <Button Command="{Binding SeleccionarImagenCommand}">
+                            <StackPanel Orientation="Horizontal">
+                                <avalonia:MaterialIcon Kind="Upload" />
+                                <TextBlock Text="Seleccionar imagen" />
+                            </StackPanel>
+                        </Button>
+                    </StackPanel>
+                </suki:GlassCard>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</UserControl>

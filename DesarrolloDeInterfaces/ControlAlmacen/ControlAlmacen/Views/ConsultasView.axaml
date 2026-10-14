@@ -1,0 +1,35 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:ControlAlmacen.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="ControlAlmacen.Views.ConsultasView"
+             x:DataType="viewModels:ConsultasViewModel">
+    <Design.DataContext>
+        <viewModels:ConsultasViewModel />
+    </Design.DataContext>
+    
+    <!-- <StackPanel Margin="15"> -->
+    <!--     <Button IsVisible="False"  -->
+    <!--             Command="{Binding ObtenerComponentesCommand}" /> -->
+    <!--     <ListBox ItemsSource="{Binding Componentes}"> -->
+    <!--         <ListBox.ItemTemplate> -->
+    <!--             <DataTemplate> -->
+    <!--                 <Border Padding="15" -->
+    <!--                         Margin="5" -->
+    <!--                         CornerRadius="10" -->
+    <!--                         BorderThickness="1" -->
+    <!--                         BorderBrush="AntiqueWhite"> -->
+    <!--                     <StackPanel> -->
+    <!--                         <TextBlock Text="{Binding Categoria}" /> -->
+    <!--                         <TextBlock Text="{Binding Nombre}" /> -->
+    <!--                         <TextBlock Text="{Binding Descripcion}" /> -->
+    <!--                     </StackPanel> -->
+    <!--                 </Border> -->
+    <!--             </DataTemplate> -->
+    <!--         </ListBox.ItemTemplate> -->
+    <!--     </ListBox> -->
+    <!-- </StackPanel> -->
+    
+</UserControl>

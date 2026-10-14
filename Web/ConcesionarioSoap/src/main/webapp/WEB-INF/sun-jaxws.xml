@@ -5,8 +5,4 @@
 	<endpoint name="ConcesionarioSoap"
 		implementation="concesionario.Concesionario"
 		url-pattern="/ConcesionarioSoap" />
-		
-		<endpoint name="ProductoSoap"
-		implementation="es.ercilla.soap.ProductoService"
-		url-pattern="/ProductoService" />
 </endpoints>

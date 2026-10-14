@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<endpoints
+	xmlns="http://java.sun.com/xml/ns/jax-ws/ri/runtime" version="2.0">
+
+	<endpoint name="ProductoService"
+		implementation="com.service.ProductoService"
+		url-pattern="/ProductoService" />
+	<endpoint name="ClienteService"
+		implementation="com.service.ClienteService"
+		url-pattern="/ClienteService" />
+	<endpoint name="FacturaService"
+		implementation="com.service.FacturaService"
+		url-pattern="/FacturaService" />
+		
+</endpoints>
