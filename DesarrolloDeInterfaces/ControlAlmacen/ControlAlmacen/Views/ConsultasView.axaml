@@ -3,33 +3,32 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewModels="clr-namespace:ControlAlmacen.ViewModels"
+             xmlns:suki="https://github.com/kikipoulet/SukiUI"
+             xmlns:asyncImageLoader="clr-namespace:AsyncImageLoader;assembly=AsyncImageLoader.Avalonia"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="ControlAlmacen.Views.ConsultasView"
              x:DataType="viewModels:ConsultasViewModel">
     <Design.DataContext>
         <viewModels:ConsultasViewModel />
     </Design.DataContext>
+    <Interaction.Behaviors>
+        <EventTriggerBehavior EventName="Loaded">
+            <InvokeCommandAction Command="{Binding ListarProductosCommand}"/>
+        </EventTriggerBehavior>
+    </Interaction.Behaviors>
     
-    <!-- <StackPanel Margin="15"> -->
-    <!--     <Button IsVisible="False"  -->
-    <!--             Command="{Binding ObtenerComponentesCommand}" /> -->
-    <!--     <ListBox ItemsSource="{Binding Componentes}"> -->
-    <!--         <ListBox.ItemTemplate> -->
-    <!--             <DataTemplate> -->
-    <!--                 <Border Padding="15" -->
-    <!--                         Margin="5" -->
-    <!--                         CornerRadius="10" -->
-    <!--                         BorderThickness="1" -->
-    <!--                         BorderBrush="AntiqueWhite"> -->
-    <!--                     <StackPanel> -->
-    <!--                         <TextBlock Text="{Binding Categoria}" /> -->
-    <!--                         <TextBlock Text="{Binding Nombre}" /> -->
-    <!--                         <TextBlock Text="{Binding Descripcion}" /> -->
-    <!--                     </StackPanel> -->
-    <!--                 </Border> -->
-    <!--             </DataTemplate> -->
-    <!--         </ListBox.ItemTemplate> -->
-    <!--     </ListBox> -->
-    <!-- </StackPanel> -->
+    <ListBox>
+        <ListBox.ItemTemplate>
+            <DataTemplate>
+                <suki:GlassCard>
+                    <StackPanel>
+                        <TextBlock Text="Nombre:"/>
+                        <TextBlock Text="{Binding}"/>
+                    </StackPanel>
+                </suki:GlassCard>
+            </DataTemplate>
+        </ListBox.ItemTemplate>
+    </ListBox>
+    
     
 </UserControl>

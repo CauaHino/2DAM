@@ -14,9 +14,6 @@
     <Design.DataContext>
         <viewModels:AltaComponenteViewModel />
     </Design.DataContext>
-    <UserControl.DataContext>
-        <viewModels:AltaComponenteViewModel />
-    </UserControl.DataContext>
 
     <ScrollViewer HorizontalScrollBarVisibility="Disabled"
                   VerticalScrollBarVisibility="Auto"
@@ -150,7 +147,9 @@
             <!-- CONTENIDO DE LA COLUMNA 1 -->
             <StackPanel Grid.Column="1">
                 <Button Classes="Outlined" HorizontalAlignment="Right"
-                        Margin="0. 25, 0,0">
+                        Margin="0. 25, 0,0"
+                        Command="{Binding NavegarCommand}"
+                        CommandParameter="Home">
                     <Grid ColumnDefinitions="*,*"
                           ColumnSpacing="5">
                         <avalonia:MaterialIcon Grid.Column="0" Kind="ArrowLeft" />
@@ -273,6 +272,8 @@
                         </Button>
                     </StackPanel>
                 </suki:GlassCard>
+                <Button Content="Crear Producto" 
+                    Command="{Binding CrearProductoCommand}"/>
             </StackPanel>
         </Grid>
     </ScrollViewer>

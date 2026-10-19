@@ -1,16 +1,17 @@
 ﻿using System;
+using System.Text.Json.Serialization;
 using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace ControlAlmacen.Models;
 
 public partial class Componente : ObservableObject
 {
-    [ObservableProperty] string _categoria = string.Empty;
-    [ObservableProperty] string _nombre = string.Empty;
-    [ObservableProperty] string _referencia = string.Empty;
-    [ObservableProperty] string _descripcion = string.Empty;
-    [ObservableProperty] int _cantidad = 0;
-    [ObservableProperty] bool _disponible = false;
-    [ObservableProperty] DateTime _fecha = DateTime.Now;
-    [ObservableProperty] double _precio = 0;
+   public Guid Id { get; set; }
+   public string Nombre { get; set; }
+   public string Descripcion { get; set; }
+   public string Codigo { get; set; }
+   [JsonPropertyName("precio_venta")]  public decimal PrecioVenta { get; set; }
+   public int Stock { get; set; }
+   public bool activo { get; set; } = true;
+   [JsonPropertyName("fecha_alta")] public DateTime FechaAlta { get; set; } =  DateTime.Now;
 }
