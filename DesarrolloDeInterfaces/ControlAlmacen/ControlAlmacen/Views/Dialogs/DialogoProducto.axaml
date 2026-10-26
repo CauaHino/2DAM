@@ -1,0 +1,70 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:ControlAlmacen.ViewModels"
+             xmlns:suki="https://github.com/kikipoulet/SukiUI"
+             xmlns:asyncImageLoader="clr-namespace:AsyncImageLoader;assembly=AsyncImageLoader.Avalonia"
+             xmlns:dialogHostAvalonia="clr-namespace:DialogHostAvalonia;assembly=DialogHost.Avalonia"
+             mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="600"
+             x:Class="ControlAlmacen.Views.Dialogs.DialogoProducto"
+             x:DataType="viewModels:ConsultasViewModel">
+    <Design.DataContext>
+        <viewModels:ConsultasViewModel />
+    </Design.DataContext>
+   <!-- Usamos GlassCard para darle el acabado de SukiUI con bordes y sombra -->
+    <suki:GlassCard Width="460" Margin="10" Padding="25">
+        <Grid RowDefinitions="Auto, *, Auto">
+            
+            <!-- Cabecera con título y botón de cierre -->
+            <Grid Grid.Row="0" ColumnDefinitions="*, Auto" Margin="0,0,0,20">
+                <TextBlock Text="Detalles del Producto" 
+                           FontSize="20" 
+                           FontWeight="Bold" 
+                           VerticalAlignment="Center"/>
+            </Grid>
+
+            <!-- Cierre de línea divisoria -->
+            <Separator Grid.Row="0" VerticalAlignment="Bottom" Margin="0,0,0,10"/>
+
+            <!-- Cuerpo del diálogo: Imagen + Información organizada -->
+            <Grid Grid.Row="1" ColumnDefinitions="Auto, *" Margin="0,10">
+                
+                <!-- Imagen del Producto -->
+                <suki:GlassCard Grid.Column="0" Padding="5" Margin="0,0,20,0" VerticalAlignment="Top">
+                    <asyncImageLoader:AdvancedImage Width="100" Height="100"
+                                                    Source="http://192.168.29.12:11078/webhook/lista?uuidProducto=c9d7f5a1-2235-4b9f-b424-103a9e233d72" />
+                </suki:GlassCard>
+
+                <!-- Datos principales -->
+                <StackPanel Grid.Column="1" Spacing="12" VerticalAlignment="Center">
+                    <StackPanel Spacing="2">
+                        <TextBlock Text="CÓDIGO" FontSize="11" FontWeight="SemiBold" Foreground="#888888"/>
+                        <TextBlock Text="{Binding Componente.Codigo}" FontSize="15" FontWeight="Bold"/>
+                    </StackPanel>
+
+                    <StackPanel Spacing="2">
+                        <TextBlock Text="NOMBRE" FontSize="11" FontWeight="SemiBold" Foreground="#888888"/>
+                        <TextBlock Text="{Binding Componente.Nombre}" FontSize="15" TextWrapping="Wrap"/>
+                    </StackPanel>
+
+                    <StackPanel Spacing="2">
+                        <StackPanel Orientation="Horizontal" Spacing="4">
+                            <TextBlock Text="{Binding Componente.PrecioVenta}" 
+                                       FontSize="16" 
+                                       FontWeight="Bold" 
+                                       Foreground="#2A9D8F"/>
+                            <TextBlock Text="€" 
+                                       FontSize="16" 
+                                       FontWeight="Bold" 
+                                       Foreground="#2A9D8F"/>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+            
+        </Grid>
+    </suki:GlassCard>
+</UserControl>
+
+

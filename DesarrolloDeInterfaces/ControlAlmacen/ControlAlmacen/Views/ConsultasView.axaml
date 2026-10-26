@@ -5,30 +5,61 @@
              xmlns:viewModels="clr-namespace:ControlAlmacen.ViewModels"
              xmlns:suki="https://github.com/kikipoulet/SukiUI"
              xmlns:asyncImageLoader="clr-namespace:AsyncImageLoader;assembly=AsyncImageLoader.Avalonia"
+             xmlns:dialogHostAvalonia="clr-namespace:DialogHostAvalonia;assembly=DialogHost.Avalonia"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="ControlAlmacen.Views.ConsultasView"
              x:DataType="viewModels:ConsultasViewModel">
     <Design.DataContext>
         <viewModels:ConsultasViewModel />
     </Design.DataContext>
+
     <Interaction.Behaviors>
         <EventTriggerBehavior EventName="Loaded">
-            <InvokeCommandAction Command="{Binding ListarProductosCommand}"/>
+            <InvokeCommandAction Command="{Binding ListarProductosCommand}" />
         </EventTriggerBehavior>
     </Interaction.Behaviors>
-    
-    <ListBox>
-        <ListBox.ItemTemplate>
-            <DataTemplate>
-                <suki:GlassCard>
-                    <StackPanel>
-                        <TextBlock Text="Nombre:"/>
-                        <TextBlock Text="{Binding}"/>
-                    </StackPanel>
-                </suki:GlassCard>
-            </DataTemplate>
-        </ListBox.ItemTemplate>
-    </ListBox>
-    
-    
+    <StackPanel>
+        <dialogHostAvalonia:DialogHost
+            ZIndex="3"
+            Identifier="DialogoProducto" CloseOnClickAway="True"
+            Background="Transparent"
+            OverlayBackground="Transparent">
+            <dialogHostAvalonia:DialogHost.DialogContent />
+        </dialogHostAvalonia:DialogHost>
+        <ListBox ItemsSource="{Binding ListaProductos}"
+                 SelectedItem="{Binding Componente}">
+            <Interaction.Behaviors>
+                <EventTriggerBehavior EventName="DoubleTapped">
+                    <InvokeCommandAction Command="{Binding AbrirDialogProductoCommand}" />
+                </EventTriggerBehavior>
+            </Interaction.Behaviors>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <suki:GlassCard>
+                        <Grid ColumnDefinitions="Auto, *">
+                            <StackPanel>
+                                <asyncImageLoader:AdvancedImage Width="80" Height="80"
+                                                                Source="http://192.168.29.12:11078/imagenes?uuidProducto=c9d7f5a1-2235-4b9f-b424-103a9e233d72" />
+                            </StackPanel>
+                            <StackPanel Spacing="10"
+                                        Grid.Column="1">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Codigo: " />
+                                    <TextBlock Text="{Binding Codigo}" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Nombre: " />
+                                    <TextBlock Text="{Binding Nombre}" />
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="Precio de Venta: " />
+                                    <TextBlock Text="{Binding PrecioVenta}" />
+                                </StackPanel>
+                            </StackPanel>
+                        </Grid>
+                    </suki:GlassCard>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </StackPanel>
 </UserControl>
