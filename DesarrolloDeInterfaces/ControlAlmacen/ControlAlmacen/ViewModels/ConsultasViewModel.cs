@@ -5,7 +5,10 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using ControlAlmacen.Models;
 using ControlAlmacen.Services;
+using ControlAlmacen.Views.Dialogs;
+using DialogHostAvalonia;
 using Material.Icons;
+using SukiUI.Dialogs;
 
 namespace ControlAlmacen.ViewModels;
 
@@ -17,6 +20,7 @@ public partial class ConsultasViewModel : ViewModelBase
     [ObservableProperty] private AvaloniaList<string> _listarUrlImagenes = new();
     [ObservableProperty] private AvaloniaList<Proveedor> _listaProveedores = new();
     [ObservableProperty] private AvaloniaList<Componente> _listaProductos = new();
+    [ObservableProperty] private Componente _componente;
 
     public ConsultasViewModel(){}
     public ConsultasViewModel(NavigationService navigationService, N8NService n8nService)
@@ -49,5 +53,11 @@ public partial class ConsultasViewModel : ViewModelBase
     public async Task ListarProductos()
     {
         ListaProductos = await _n8nService.SelectProductos();
+    }
+
+    [RelayCommand]
+    public void AbrirDialogProducto()
+    {
+        DialogHost.Show(new DialogoProducto(), "DialogoProducto");
     }
 }

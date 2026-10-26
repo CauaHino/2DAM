@@ -12,6 +12,6 @@ public partial class Componente : ObservableObject
    public string Codigo { get; set; }
    [JsonPropertyName("precio_venta")]  public decimal PrecioVenta { get; set; }
    public int Stock { get; set; }
-   public bool activo { get; set; } = true;
+   public bool Activo { get; set; } = true;
    [JsonPropertyName("fecha_alta")] public DateTime FechaAlta { get; set; } =  DateTime.Now;
 }

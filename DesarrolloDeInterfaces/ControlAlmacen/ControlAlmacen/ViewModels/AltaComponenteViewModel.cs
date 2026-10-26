@@ -61,7 +61,7 @@ public partial class AltaComponenteViewModel : ViewModelBase
          Codigo = "RAM2",
          Descripcion = "Memoria RAM",
          PrecioVenta = 200,
-         activo =  true,
+         Activo =  true,
          FechaAlta = DateTime.Now
       };
       

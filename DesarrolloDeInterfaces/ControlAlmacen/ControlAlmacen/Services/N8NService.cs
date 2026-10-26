@@ -104,11 +104,11 @@ public class N8NService
                 Id = producto.GetProperty("id").GetGuid(),
                 Nombre = producto.GetProperty("nombre").GetString(),
                 Descripcion =  producto.GetProperty("descripcion").GetString(),
-                activo =  producto.GetProperty("activo").GetBoolean(),
+                Activo =  producto.GetProperty("activo").GetBoolean(),
                 Codigo = producto.GetProperty("codigo").GetString(),
                 FechaAlta =  producto.GetProperty("fecha_alta").GetDateTime(),
                 Stock = producto.GetProperty("stock").GetInt32(),
-                PrecioVenta = producto.GetProperty("precio_venta").GetDecimal()
+                PrecioVenta = decimal.Parse(producto.GetProperty("precio_venta").GetString())
             });
         }
 

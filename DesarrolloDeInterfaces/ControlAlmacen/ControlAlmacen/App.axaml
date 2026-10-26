@@ -4,6 +4,7 @@
              xmlns:local="using:ControlAlmacen"
              xmlns:suki="https://github.com/kikipoulet/SukiUI"
              xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+             xmlns:dialogHostAvalonia="clr-namespace:DialogHostAvalonia;assembly=DialogHost.Avalonia"
              RequestedThemeVariant="Default">
              <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
 
@@ -15,5 +16,6 @@
         <StyleInclude Source="avares://AsyncImageLoader.Avalonia/AdvancedImage.axaml"/>
         <suki:SukiTheme ThemeColor="Red"  /> 
         <avalonia:MaterialIconStyles/>
+        <dialogHostAvalonia:DialogHostStyles />
     </Application.Styles>
 </Application>
