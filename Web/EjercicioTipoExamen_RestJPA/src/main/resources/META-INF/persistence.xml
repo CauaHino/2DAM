@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        https://jakarta.ee/xml/ns/persistence
+        https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
+	version="3.0">
+
+	<persistence-unit name="examen" transaction-type="RESOURCE_LOCAL">
+		<class>es.ercilla.modelo.Cliente</class> 
+		<class>es.ercilla.modelo.Factura</class> 
+		<class>es.ercilla.modelo.Producto</class> 
+		<properties>
+			<!-- Driver y URL para tu contenedor Oracle 23c Free -->
+			<property name="jakarta.persistence.jdbc.driver" value="oracle.jdbc.OracleDriver" />
+			<property name="jakarta.persistence.jdbc.url" value="jdbc:oracle:thin:@192.168.29.12:10341/FREEPDB1" />
+			
+			<!-- Tus credenciales de Docker -->
+			<property name="jakarta.persistence.jdbc.user" value="dam85" />
+			<property name="jakarta.persistence.jdbc.password" value="Diego123" />
+			
+			<!-- Dialecto de Hibernate para Oracle -->
+			<property name="hibernate.dialect" value="org.hibernate.dialect.OracleDialect" />
+			
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
+		</properties>
+	</persistence-unit>
+</persistence>

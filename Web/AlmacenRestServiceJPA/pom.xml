@@ -1,0 +1,92 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>AlmacenRestServiceJPA</groupId>
+	<artifactId>AlmacenRestServiceJPA</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
+	<properties>
+		<maven.compiler.release>21</maven.compiler.release>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<jakarta.servlet.api.version>6.0.0</jakarta.servlet.api.version>
+		<jaxws.rt.version>4.0.3</jaxws.rt.version>
+		<hibernate.core.version>6.6.9.Final</hibernate.core.version>
+		<ojdbc11.version>23.26.0.0.0</ojdbc11.version>
+		<oraclepki.version>23.6.0.24.10</oraclepki.version>
+		<jersey.version>3.1.11</jersey.version>
+	</properties>
+	<dependencies>
+		<!--  Servlet API para Tomcat 10.1  -->
+		<dependency>
+			<groupId>jakarta.servlet</groupId>
+			<artifactId>jakarta.servlet-api</artifactId>
+			<version>${jakarta.servlet.api.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<!--  SOAP Jakarta / Metro  -->
+		<dependency>
+			<groupId>com.sun.xml.ws</groupId>
+			<artifactId>jaxws-rt</artifactId>
+			<version>${jaxws.rt.version}</version>
+		</dependency>
+		<!--  JPA / Hibernate  -->
+		<dependency>
+			<groupId>org.hibernate.orm</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${hibernate.core.version}</version>
+		</dependency>
+		<!--  Driver Oracle para JDK 21  -->
+		<dependency>
+			<groupId>com.oracle.database.jdbc</groupId>
+			<artifactId>ojdbc11</artifactId>
+			<version>${ojdbc11.version}</version>
+		</dependency>
+		<!--  Implementacion REST  -->
+		<dependency>
+			<groupId>org.glassfish.jersey.containers</groupId>
+			<artifactId>jersey-container-servlet</artifactId>
+			<version>${jersey.version}</version>
+		</dependency>
+		<!--  Inyeccion de dependencias Jersey  -->
+		<dependency>
+			<groupId>org.glassfish.jersey.inject</groupId>
+			<artifactId>jersey-hk2</artifactId>
+			<version>${jersey.version}</version>
+		</dependency>
+		<!--  API Servlet proporcionada por Tomcat  -->
+		<dependency>
+			<groupId>jakarta.servlet</groupId>
+			<artifactId>jakarta.servlet-api</artifactId>
+			<version>6.0.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<!--  Cliente JAX-RS con Jersey  -->
+		<dependency>
+			<groupId>org.glassfish.jersey.core</groupId>
+			<artifactId>jersey-client</artifactId>
+			<version>3.1.11</version>
+		</dependency>
+		<!--  Dependencia de Jackson para el envío de JSON -->
+		<dependency>
+			<groupId>org.glassfish.jersey.media</groupId>
+			<artifactId>jersey-media-json-jackson</artifactId>
+			<version>3.1.11</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.2.3</version>
+			</plugin>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.13.0</version>
+				<configuration>
+					<release>${maven.compiler.release}</release>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
